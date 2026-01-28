@@ -34,6 +34,12 @@ ramtousd
 
 Press `q` or `Escape` to quit.
 
+### How it works
+
+Memory is measured using RSS (Resident Set Size), not virtual memory. RSS represents the actual physical RAM a process is using, though there's some inaccuracy when multiple processes share memory pages - the same memory can be counted more than once.
+
+Also worth noting: modern operating systems *want* to use your RAM. If you have 48GB, you should expect most of it to be in use - that's the OS doing its job, caching files and keeping things fast. An empty RAM bar isn't a badge of honor.
+
 ### Configuration
 
 Create `~/.config/ramtousd.jsonc` to customize pricing:
