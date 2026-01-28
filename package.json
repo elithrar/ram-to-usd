@@ -1,0 +1,32 @@
+{
+  "name": "ram-to-usd",
+  "version": "0.1.0",
+  "description": "TUI that converts RAM usage by process to USD and Apple dollars",
+  "author": "Matt <matt@eatsleeprepeat.net>",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "ramtousd": "./src/index.tsx"
+  },
+  "scripts": {
+    "start": "bun run src/index.tsx",
+    "build": "bun build --compile --minify --sourcemap ./src/index.tsx --outfile dist/ramtousd",
+    "check": "bun run lint && bun run format:check && bun run typecheck",
+    "lint": "oxlint",
+    "format": "oxfmt --write src/",
+    "format:check": "oxfmt --check src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.10",
+    "oxfmt": "^0.27.0",
+    "oxlint": "^1.42.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@opentui/core": "^0.1.75",
+    "@opentui/react": "^0.1.75",
+    "react": "^19.2.4"
+  }
+}
