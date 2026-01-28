@@ -2,7 +2,7 @@
 
 RAM is getting expensive. What processes are eating the most $$?
 
-![ramtousd demo](https://github.com/elithrar/ram-to-usd/assets/demo.png)
+![ramtousd demo](demo.png)
 
 ### Install
 

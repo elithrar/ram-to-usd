@@ -25,19 +25,20 @@ export function TotalBar({ totalRssKB, config }: TotalBarProps) {
       paddingRight={1}
     >
       <text>
-        <strong>TOTAL</strong>
+        <strong>RAM IN USE</strong>
       </text>
       <text>{sep}</text>
       <text>
-        <strong fg="cyan">{formatMemory(totalRssKB)}</strong>
+        <strong fg="#FFA500">{formatMemory(totalRssKB)}</strong>
+        <em fg="gray"> (RSS)</em>
       </text>
       <text>{sep}</text>
       <text>
-        <strong fg="green">{formatPrice(usd)}</strong>
+        <strong fg="red">USD$ {formatPrice(usd)}</strong>
       </text>
       <text>{sep}</text>
       <text>
-        <strong fg="magenta">{formatPrice(apple)}</strong>
+        <strong fg="yellow">APPLE$ {formatPrice(apple)}</strong>
       </text>
     </box>
   );
