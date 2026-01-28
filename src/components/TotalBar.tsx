@@ -1,3 +1,4 @@
+import { useTerminalDimensions } from "@opentui/react";
 import type { Config } from "../lib/config.ts";
 import { formatMemory, formatPrice, kbToUSD, kbToApple } from "../lib/pricing.ts";
 
@@ -7,8 +8,13 @@ interface TotalBarProps {
 }
 
 export function TotalBar({ totalRssKB, config }: TotalBarProps) {
+  const { width } = useTerminalDimensions();
+  const isNarrow = width < 50;
+
   const usd = kbToUSD(totalRssKB, config);
   const apple = kbToApple(totalRssKB, config);
+
+  const sep = isNarrow ? " " : " | ";
 
   return (
     <box
@@ -21,17 +27,17 @@ export function TotalBar({ totalRssKB, config }: TotalBarProps) {
       <text>
         <strong>TOTAL</strong>
       </text>
-      <text> | </text>
+      <text>{sep}</text>
       <text>
-        RAM: <strong fg="cyan">{formatMemory(totalRssKB)}</strong>
+        <strong fg="cyan">{formatMemory(totalRssKB)}</strong>
       </text>
-      <text> | </text>
+      <text>{sep}</text>
       <text>
-        $USD: <strong fg="green">{formatPrice(usd)}</strong>
+        <strong fg="green">{formatPrice(usd)}</strong>
       </text>
-      <text> | </text>
+      <text>{sep}</text>
       <text>
-        $APPLE: <strong fg="magenta">{formatPrice(apple)}</strong>
+        <strong fg="magenta">{formatPrice(apple)}</strong>
       </text>
     </box>
   );
