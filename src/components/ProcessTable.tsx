@@ -40,7 +40,7 @@ export function ProcessTable({ processes, config }: ProcessTableProps) {
   const row = (n: string, r: string, u: string, a: string) =>
     `${truncate(n, nameW).padEnd(nameW)} ${r.padStart(ramW)} ${u.padStart(usdW)} ${a.padStart(appleW)}`;
 
-  const header = row("App", "RAM", "$USD", "APPLE$");
+  const header = row("App", "RAM", "USD", "APPLE");
   const divider = "\u2500".repeat(totalW);
 
   // Build all rows as a single string to avoid spacing issues

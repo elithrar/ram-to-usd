@@ -34,11 +34,11 @@ export function TotalBar({ totalRssKB, config }: TotalBarProps) {
       </text>
       <text>{sep}</text>
       <text>
-        <strong fg="red">USD$ {formatPrice(usd)}</strong>
+        <strong fg="red">USD {formatPrice(usd)}</strong>
       </text>
       <text>{sep}</text>
       <text>
-        <strong fg="yellow">APPLE$ {formatPrice(apple)}</strong>
+        <strong fg="yellow">APPLE {formatPrice(apple)}</strong>
       </text>
     </box>
   );
