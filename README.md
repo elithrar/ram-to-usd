@@ -20,6 +20,9 @@ git clone https://github.com/elithrar/ram-to-usd
 cd ram-to-usd
 bun install
 bun run build  # outputs to dist/ramtousd
+# or: bun run start
+
+# Run the binary
 ./dist/ramtousd
 ```
 
