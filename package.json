@@ -1,13 +1,36 @@
 {
-  "name": "ram-to-usd",
+  "name": "ramtousd",
   "version": "0.1.0",
   "description": "TUI that converts RAM usage by process to USD and Apple dollars",
   "author": "Matt <matt@eatsleeprepeat.net>",
   "license": "Apache-2.0",
   "type": "module",
+  "keywords": [
+    "ram",
+    "memory",
+    "tui",
+    "macos",
+    "cli",
+    "terminal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elithrar/ram-to-usd.git"
+  },
+  "homepage": "https://github.com/elithrar/ram-to-usd",
+  "bugs": {
+    "url": "https://github.com/elithrar/ram-to-usd/issues"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
   "bin": {
     "ramtousd": "./src/index.tsx"
   },
+  "files": [
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "start": "bun run src/index.tsx",
     "build": "bun build --compile --minify --sourcemap ./src/index.tsx --outfile dist/ramtousd",
@@ -15,7 +38,8 @@
     "lint": "oxlint",
     "format": "oxfmt --write src/",
     "format:check": "oxfmt --check src/",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run check"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -28,5 +52,13 @@
     "@opentui/core": "^0.1.75",
     "@opentui/react": "^0.1.75",
     "react": "^19.2.4"
+  },
+  "peerDependencies": {
+    "bun": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "bun": {
+      "optional": false
+    }
   }
 }
