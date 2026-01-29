@@ -6,6 +6,7 @@ export interface ProcessInfo {
 }
 
 export interface AggregatedProcess {
+  rootPid: number;
   name: string;
   rssKB: number;
   processCount: number;
@@ -97,9 +98,10 @@ export function aggregateByParent(processes: ProcessInfo[]): AggregatedProcess[]
 
   // Aggregate each group
   const result: AggregatedProcess[] = [];
-  for (const [, group] of groups) {
+  for (const [rootPid, group] of groups) {
     const totalRss = group.processes.reduce((sum, p) => sum + p.rssKB, 0);
     result.push({
+      rootPid,
       name: extractAppName(group.rootCommand),
       rssKB: totalRss,
       processCount: group.processes.length,

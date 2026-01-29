@@ -25,28 +25,30 @@ export function ProcessTable({ processes, config }: ProcessTableProps) {
   const totalW = Math.max(30, width - 5);
 
   // Fixed column widths
+  const pidW = 6; // "12345"
   const ramW = 9; // "18.59 GB"
   const usdW = 8; // "$116.16"
   const appleW = 8; // "$290.40"
-  const gaps = 3; // spaces between columns
+  const gaps = 4; // spaces between columns
 
   // Name column is flexible
-  const nameW = Math.max(8, totalW - ramW - usdW - appleW - gaps);
+  const nameW = Math.max(8, totalW - pidW - ramW - usdW - appleW - gaps);
 
   // Account for: TotalBar (~3 rows), header (1), divider (1), footer (1)
   const tableHeight = Math.max(5, height - 6);
 
   // Format a row - ensures exact width
-  const row = (n: string, r: string, u: string, a: string) =>
-    `${truncate(n, nameW).padEnd(nameW)} ${r.padStart(ramW)} ${u.padStart(usdW)} ${a.padStart(appleW)}`;
+  const row = (p: string, n: string, r: string, u: string, a: string) =>
+    `${p.padStart(pidW)} ${truncate(n, nameW).padEnd(nameW)} ${r.padStart(ramW)} ${u.padStart(usdW)} ${a.padStart(appleW)}`;
 
-  const header = row("App", "RAM", "USD", "APPLE");
+  const header = row("PID", "App", "RAM", "USD", "APPLE");
   const divider = "\u2500".repeat(totalW);
 
   // Build all rows as a single string to avoid spacing issues
   const lines = processes.map((proc) => {
     const suffix = proc.processCount > 1 ? ` (${proc.processCount})` : "";
     return row(
+      proc.rootPid.toString(),
       proc.name + suffix,
       formatMemory(proc.rssKB),
       formatPrice(kbToUSD(proc.rssKB, config)),
