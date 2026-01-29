@@ -22,7 +22,7 @@
     "url": "https://github.com/elithrar/ram-to-usd/issues"
   },
   "engines": {
-    "node": ">=18"
+    "bun": ">=1.0.0"
   },
   "bin": {
     "ramtousd": "./src/index.tsx"
@@ -52,5 +52,13 @@
     "@opentui/core": "^0.1.75",
     "@opentui/react": "^0.1.75",
     "react": "^19.2.4"
+  },
+  "peerDependencies": {
+    "bun": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "bun": {
+      "optional": false
+    }
   }
 }
