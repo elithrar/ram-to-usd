@@ -6,15 +6,11 @@ RAM is getting expensive. What processes are eating the most $$?
 
 ### Install
 
+Requires [Bun](https://bun.sh/) (`brew install oven-sh/bun/bun`).
+
 ```bash
-# requires bun and zig
-brew install oven-sh/bun/bun zig
-
-# install globally
-bun install -g ram-to-usd
-
-# or run directly
-bunx ram-to-usd
+# run directly (no install needed)
+bunx ramtousd
 ```
 
 ### Build from source
@@ -24,6 +20,7 @@ git clone https://github.com/elithrar/ram-to-usd
 cd ram-to-usd
 bun install
 bun run build  # outputs to dist/ramtousd
+./dist/ramtousd
 ```
 
 ### Usage
